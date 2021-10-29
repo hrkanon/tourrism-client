@@ -11,10 +11,10 @@ const Destinations = () => {
       .then((data) => setDestinations(data));
   }, []);
   return (
-    <div>
+    <div id="destinations">
       <div className="container mt-5">
         <div>
-          <h2 className="text-center mt-5">Our Services</h2>
+          <h2 className="text-center mt-5">Our Tour Plans</h2>
           <div className="underline-div mx-auto"></div>
         </div>
         <div className="row g-3 mt-4">
@@ -37,12 +37,17 @@ const Destinations = () => {
                 <h3 className="price fw-bold">${destination.price}</h3>
                 <div className="details">
                   <Link to={`/destination/${destination._id}`}>
-                    <button className=" btn btn-warning">Book Now</button>
+                    <button className=" btn btn-danger">Book Now</button>
                   </Link>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+        <div className="my-5 text-center">
+          <Link to={"/addDestination"}>
+            <button className="btn btn-primary px-5 py-2">Add Tours</button>
+          </Link>
         </div>
       </div>
     </div>

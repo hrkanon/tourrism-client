@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./Header.css";
 import { HashLink } from "react-router-hash-link";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import logo from "../../images/logo.png";
 
@@ -19,13 +19,13 @@ const Header = () => {
         sticky="top"
       >
         <Container>
-          <div className="d-flex justify-content-end ">
+          <div className="d-flex">
             <Navbar.Brand>
               <img className="w-25" src={logo} alt="" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           </div>
-          <Navbar.Collapse className="justify-content-end ">
+          <Navbar.Collapse className=" ">
             <Nav.Link
               className="text-center text-dark"
               as={HashLink}
@@ -36,20 +36,27 @@ const Header = () => {
             <Nav.Link
               className="text-center text-dark"
               as={HashLink}
-              to="/tours"
+              to="/destinations"
             >
               Tours
             </Nav.Link>
             <Nav.Link
               className="text-center text-dark"
               as={HashLink}
-              to="/destination"
+              to="/cart"
             >
-              Destination
+              My Orders
+            </Nav.Link>
+            <Nav.Link
+              className="text-center text-dark"
+              as={HashLink}
+              to="/allOrders"
+            >
+              All Orders
             </Nav.Link>
             {user.email ? (
               <Nav.Link className="text-dark text-center">
-                Signed as: {user.displayName}
+                Signed: {user.displayName}
                 <span className="ps-3" onClick={handleSignOut}>
                   Logout
                 </span>

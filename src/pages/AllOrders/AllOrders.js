@@ -1,41 +1,19 @@
 import React, { useEffect, useState } from "react";
-import useAuth from "../../Hooks/useAuth";
-import "./Cart.css";
+import "./AllOrders.css";
 
-const Cart = () => {
-  const [orders, setOrders] = useState([]);
-  const [isDeleted, setIsDeleted] = useState(null);
-  const { user } = useAuth();
-  const email = user.email;
+const AllOrders = () => {
+  const [allOrders, setAllOrders] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/myOrders/${email}`)
+    fetch("http://localhost:5000/orders")
       .then((res) => res.json())
-      .then((data) => setOrders(data));
-  }, [isDeleted]);
-
-  const handleDelete = (productId) => {
-    console.log(productId);
-    fetch(`http://localhost:5000/deleteProduct/${productId}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.deleteCount) {
-          setIsDeleted(true);
-        } else {
-          setIsDeleted(false);
-        }
-      });
-  };
+      .then((data) => setAllOrders(data));
+  }, []);
   return (
     <div>
-      <h2 className="text-center">My Orders: {orders?.length}</h2>
+      <h2 className="text-center">All Orders: {allOrders?.length}</h2>
       <div className="container">
         <div className="row g-3 mt-4">
-          {orders.map((order) => (
+          {allOrders.map((order) => (
             <div key={order._id} className="col-md-4">
               <div className="card m-2 p-3">
                 <div className=" text-center">
@@ -57,12 +35,6 @@ const Cart = () => {
                   Status:
                   <span className="text-danger ps-1">{order.status}</span>
                 </small>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDelete(order._id)}
-                >
-                  X
-                </button>
                 <div className="details">
                   <button className=" btn btn-warning">
                     <i class="fas pe-2 fa-cart-arrow-down"></i>Buy Now
@@ -77,4 +49,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default AllOrders;

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 import "./SingleDestination.css";
 
 const SingleDestination = () => {
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState({});
   const { destinationId } = useParams();
+  const { user } = useAuth();
 
   useEffect(() => {
     fetch(`http://localhost:5000/destination/${destinationId}`)
@@ -14,7 +16,20 @@ const SingleDestination = () => {
   }, []);
 
   const handleBooking = () => {
-    alert("Added to cart successfully");
+    const data = details;
+    data.email = user.email;
+    data.status = "pending";
+    fetch("http://localhost:5000/addOrder", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Added to your cart");
+        }
+      });
   };
   return (
     <div className="container">
@@ -27,15 +42,13 @@ const SingleDestination = () => {
             <p>{details.days} days tour</p>
           </div>
           <div className="text-center">
-            <Link to="/cart">
-              <button onClick={handleBooking} className="btn btn-primary">
-                Book Now
-              </button>
-            </Link>
+            <button onClick={handleBooking} className="btn btn-primary">
+              Book Now
+            </button>
           </div>
         </div>
         <div className="col-md-6">
-          <img src={details.img} alt="" />
+          <img className="img-fluid" src={details.img} alt="" />
         </div>
       </div>
     </div>

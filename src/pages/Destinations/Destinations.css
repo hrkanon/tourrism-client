@@ -20,7 +20,7 @@
 }
 .price {
   position: absolute;
-  right: 0;
+  left: 0;
   /* padding-right: 15px; */
   padding: 5px 15px 10px;
   background-color: orange;

@@ -7,8 +7,8 @@ import { Carousel } from "react-bootstrap";
 
 const Banner = () => {
   return (
-    <Carousel fade>
-      <Carousel.Item>
+    <Carousel>
+      <Carousel.Item interval={800}>
         <img className="d-block w-100" src={img1} alt="First slide" />
         <Carousel.Caption>
           <h4>UNITED STATES</h4>
@@ -23,7 +23,7 @@ const Banner = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item interval={800}>
         <img className="d-block w-100" src={img2} alt="First slide" />
         <Carousel.Caption>
           <h4>UNITED Kingdom</h4>
@@ -35,7 +35,7 @@ const Banner = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item interval={800}>
         <img className="d-block w-100" src={img3} alt="First slide" />
         <Carousel.Caption>
           <h4>France</h4>

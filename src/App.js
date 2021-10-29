@@ -12,6 +12,7 @@ import SingleDestination from "./pages/SingleDestination/SingleDestination";
 import Footer from "./Shared/Footer/Footer";
 import Header from "./Shared/Header/Header";
 import PrivateRoute from "./Private/PrivateRoute";
+import AllOrders from "./pages/AllOrders/AllOrders";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route exact path="/cart">
             <Cart></Cart>
+          </Route>
+          <Route exact path="/allOrders">
+            <AllOrders></AllOrders>
           </Route>
           <Route exact path="/login">
             <Login></Login>
