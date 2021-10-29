@@ -1,0 +1,35 @@
+.underline-div {
+  width: 100px;
+  height: 3px;
+  background-color: #16bae8;
+}
+.card {
+  height: 480px;
+}
+.card-img {
+  height: 250px;
+}
+.card:hover {
+  box-shadow: 2px 5px 10px gray;
+  border-color: aqua;
+}
+.service-card:hover img {
+  overflow: hidden;
+  transform: scale(1.5);
+  transition: transform 0.8s;
+}
+.price {
+  position: absolute;
+  right: 0;
+  /* padding-right: 15px; */
+  padding: 5px 15px 10px;
+  background-color: orange;
+}
+
+.details {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
