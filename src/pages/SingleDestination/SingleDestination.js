@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import "./SingleDestination.css";
@@ -8,9 +8,12 @@ const SingleDestination = () => {
   const [details, setDetails] = useState({});
   const { destinationId } = useParams();
   const { user } = useAuth();
+  const history = useHistory();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/destination/${destinationId}`)
+    fetch(
+      `https://floating-plains-91880.herokuapp.com/destination/${destinationId}`
+    )
       .then((res) => res.json())
       .then((data) => setDetails(data));
   }, []);
@@ -19,7 +22,7 @@ const SingleDestination = () => {
     const data = details;
     data.email = user.email;
     data.status = "pending";
-    fetch("http://localhost:5000/addOrder", {
+    fetch("https://floating-plains-91880.herokuapp.com/addOrder", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -27,7 +30,8 @@ const SingleDestination = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Added to your cart");
+          alert("Added to Your Cart Successfully!!");
+          history.push("/myOrder");
         }
       });
   };
@@ -42,7 +46,10 @@ const SingleDestination = () => {
             <p>{details.days} days tour</p>
           </div>
           <div className="text-center">
-            <button onClick={handleBooking} className="btn btn-primary">
+            <button
+              onClick={handleBooking}
+              className="btn btn-primary px-5 py-2"
+            >
               Book Now
             </button>
           </div>

@@ -41,6 +41,7 @@ const Login = () => {
   return (
     <div className="container login-form py-3 mt-5">
       <h2 className="text-center py-3">Please Login</h2>
+      <hr />
       <div className="form d-flex flex-column align-items-center">
         <input
           onBlur={handleEmailChange}
@@ -69,7 +70,7 @@ const Login = () => {
         Login
       </button>
       <p className="fw-bold mt-2 text-center">Or</p>
-      <button className="w-100 btn btn-warning" onClick={googleSignIn}>
+      <button className="w-100 btn btn-warning mb-4" onClick={googleSignIn}>
         Login with Google
       </button>
     </div>

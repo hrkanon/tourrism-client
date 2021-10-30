@@ -1,0 +1,12 @@
+.banner-img {
+  height: 90vh;
+}
+.banner-head {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.banner-heading {
+  font-size: 70px;
+}

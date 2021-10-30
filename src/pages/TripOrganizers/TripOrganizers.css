@@ -1,0 +1,15 @@
+.review-line {
+  width: 150px;
+  height: 2px;
+  background-color: #1ccaf0;
+}
+.globe {
+  font-size: 30px;
+}
+.organizer {
+  box-shadow: 2px 5px 10px gray;
+}
+.organizer-img {
+  height: 200px;
+  width: 200px;
+}

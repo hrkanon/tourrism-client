@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 import "./Destinations.css";
 
 const Destinations = () => {
   const [destinations, setDestinations] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
-    fetch("http://localhost:5000/destinations")
+    fetch("https://floating-plains-91880.herokuapp.com/destinations")
       .then((res) => res.json())
       .then((data) => setDestinations(data));
   }, []);
@@ -14,7 +16,10 @@ const Destinations = () => {
     <div id="destinations">
       <div className="container mt-5">
         <div>
-          <h2 className="text-center mt-5">Our Tour Plans</h2>
+          <h3 className="text-center mt-5">GREAT PLACES TO VISIT</h3>
+          <h1 className="text-center service-heading ">
+            Search <span className="text-warning">and Enjoy</span>
+          </h1>
           <div className="underline-div mx-auto"></div>
         </div>
         <div className="row g-3 mt-4">
@@ -28,8 +33,8 @@ const Destinations = () => {
                     alt=""
                   />
                 </div>
-                <div className="meal-info text-center">
-                  <h4>{destination.name}</h4>
+                <div className=" text-center mt-2">
+                  <h3>{destination.name}</h3>
                   <p>{destination.description}</p>
                   <p>{destination.days} Days</p>
                 </div>
@@ -37,18 +42,26 @@ const Destinations = () => {
                 <h3 className="price fw-bold">${destination.price}</h3>
                 <div className="details">
                   <Link to={`/destination/${destination._id}`}>
-                    <button className=" btn btn-danger">Book Now</button>
+                    <button className=" btn btn-danger">
+                      Book Now <i class="fas fa-angle-double-right"></i>
+                    </button>
                   </Link>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="my-5 text-center">
-          <Link to={"/addDestination"}>
-            <button className="btn btn-primary px-5 py-2">Add Tours</button>
-          </Link>
-        </div>
+        {user.email ? (
+          <div className="mt-4 text-center addTour-btn">
+            <Link to={"/addDestination"}>
+              <button className="btn btn-primary px-5 py-3 fw-bold">
+                Add Tours <i class="fas ps-1 fa-plane-departure"></i>
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

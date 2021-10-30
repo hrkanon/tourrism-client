@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthProvider from "./Context/AuthProvider";
 import AddDestination from "./pages/AddDestination/AddDestination";
-import Cart from "./pages/Cart/Cart";
 import Destinations from "./pages/Destinations/Destinations";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
@@ -13,6 +12,8 @@ import Footer from "./Shared/Footer/Footer";
 import Header from "./Shared/Header/Header";
 import PrivateRoute from "./Private/PrivateRoute";
 import AllOrders from "./pages/AllOrders/AllOrders";
+import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
+import MyOrder from "./pages/MyOrders/MyOrders";
 
 function App() {
   return (
@@ -35,12 +36,15 @@ function App() {
           <Route exact path="/addDestination">
             <AddDestination></AddDestination>
           </Route>
-          <Route exact path="/cart">
-            <Cart></Cart>
+          <Route exact path="/myOrder">
+            <MyOrder></MyOrder>
           </Route>
           <Route exact path="/allOrders">
             <AllOrders></AllOrders>
           </Route>
+          <PrivateRoute exact path="/placeOrder/:orderId">
+            <PlaceOrder></PlaceOrder>
+          </PrivateRoute>
           <Route exact path="/login">
             <Login></Login>
           </Route>

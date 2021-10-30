@@ -4,13 +4,16 @@ import "./AllOrders.css";
 const AllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://floating-plains-91880.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => setAllOrders(data));
   }, []);
   return (
     <div>
-      <h2 className="text-center">All Orders: {allOrders?.length}</h2>
+      <h2 className="text-center mt-5 service-heading">
+        All <span className="text-warning">Orders:</span> {allOrders?.length}
+      </h2>
+      <div className="underline-div mx-auto"></div>
       <div className="container">
         <div className="row g-3 mt-4">
           {allOrders.map((order) => (
@@ -37,7 +40,7 @@ const AllOrders = () => {
                 </small>
                 <div className="details">
                   <button className=" btn btn-warning">
-                    <i class="fas pe-2 fa-cart-arrow-down"></i>Buy Now
+                    <i class="fas pe-2 fa-myOrder-arrow-down"></i>Buy Now
                   </button>
                 </div>
               </div>

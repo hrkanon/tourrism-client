@@ -1,5 +1,11 @@
+.addTour-btn {
+  margin-bottom: 70px;
+}
+.service-heading {
+  font-size: 50px;
+}
 .underline-div {
-  width: 100px;
+  width: 200px;
   height: 3px;
   background-color: #16bae8;
 }

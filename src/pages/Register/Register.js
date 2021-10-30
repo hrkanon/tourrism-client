@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
-import "./Register.css";
+import useAuth from "../../Hooks/useAuth";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { signUpWithEmailPassword, error } = useAuth();
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -19,12 +21,13 @@ const Register = () => {
   };
 
   const handleRegister = (name, email, password) => {
-    // signUpWithEmailPassword(name, email, password);
+    signUpWithEmailPassword(name, email, password);
   };
 
   return (
     <div className="container login-form py-3 mt-5">
       <h2 className="text-center py-3">Please Register</h2>
+      <hr />
       <div className="form d-flex flex-column align-items-center">
         <input
           onBlur={handleNameChange}
@@ -46,7 +49,7 @@ const Register = () => {
           placeholder="password"
           required
         />
-        <small className="text-danger ps-4"></small>
+        <small className="text-danger ps-4">{error}</small>
         <br />
         <p>
           Already have an Account?
@@ -56,7 +59,7 @@ const Register = () => {
         </p>
 
         <button
-          className="btn btn-warning w-100"
+          className="btn btn-warning w-100 mb-3"
           onClick={() => handleRegister(name, email, password)}
         >
           Register

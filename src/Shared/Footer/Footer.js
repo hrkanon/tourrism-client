@@ -31,16 +31,16 @@ const Footer = () => {
               <h3>About Us</h3>
               <p>Careers</p>
               <p>Services</p>
-              <p>General Health Advisory</p>
+              <p>General Travel Advisory</p>
               <p>Our Blog</p>
             </div>
           </div>
           <div className="col-md-3 ">
             <div>
-              <h3>Patients</h3>
+              <h3>Travellers</h3>
               <p>How it Works</p>
-              <p>Find a Hospital</p>
-              <p>Find a Doctor</p>
+              <p>Find a Destination</p>
+              <p>Find an Agent</p>
               <p>Review Policy</p>
             </div>
           </div>
@@ -48,15 +48,19 @@ const Footer = () => {
             <div>
               <h3>Providers</h3>
               <p>How it Workes</p>
-              <p>Hospital Registration</p>
-              <p>Doctor Registration</p>
+              <p>Travelicious Registration</p>
+              <p>Agent Registration</p>
               <p>My Account</p>
             </div>
           </div>
         </div>
         <hr />
         <div className="text-center">
-          <small> &copy; Copiright 2021 MedService. All Rights Reserved</small>
+          <small>
+            {" "}
+            &copy; Copiright 2021 MedService. All Rights Reserved developed by
+            &copy;Habib
+          </small>
         </div>
       </div>
     </div>
