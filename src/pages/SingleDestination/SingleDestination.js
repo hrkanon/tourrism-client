@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
+import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import "./SingleDestination.css";
 
@@ -51,6 +52,13 @@ const SingleDestination = () => {
             >
               Book Now
             </button>
+          </div>
+          <div className="text-center mt-5 mb-3">
+            <Link to={"/addDestination"}>
+              <button className="btn btn-warning px-5 py-3 fw-bold">
+                Add Destination <i class="fas ps-1 fa-plane-departure"></i>
+              </button>
+            </Link>
           </div>
         </div>
         <div className="col-md-6">
