@@ -1,12 +1,14 @@
-Travelicious
+# Travelicious
+
+(A complete travel solution)
 Live Site:(https://tourism-88f41.web.app/)
 
-# We Provide Travel Packages.
+- We Provide Travel Packages.
 
-# You can buy our packages online.
+- You can buy our packages online.
 
-# We have a very efficient team who will assess your situation and provide a package suitable for you.
+- We have a very efficient team who will assess your situation and provide a package suitable for you.
 
-# We are offering best prices for all destinations.
+- We are offering best prices for all destinations.
 
-# You just buy a package and leave everything to us.
+- You just buy a package and leave everything to us.
