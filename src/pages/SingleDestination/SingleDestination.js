@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import "./SingleDestination.css";
 
@@ -21,7 +20,7 @@ const SingleDestination = () => {
   const handleBooking = () => {
     const data = details;
     data.email = user.email;
-    data.status = "pending";
+    data.status = "Pending";
     fetch("https://floating-plains-91880.herokuapp.com/addOrder", {
       method: "POST",
       headers: { "content-type": "application/json" },

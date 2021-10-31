@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import "./MyOrders.css";
@@ -36,55 +37,64 @@ const MyOrder = () => {
         });
     }
   };
+  const totalReducer = (preValue, currentValue) =>
+    preValue + parseInt(currentValue.price);
+  const total = orders.reduce(totalReducer, 0);
+
   return (
     <div>
       <h2 className="text-center mt-5 service-heading">
         My <span className="text-warning">Orders:</span> {orders?.length}
       </h2>
-      <div className="underline-div mx-auto"></div>
+      <div className="underline-div mx-auto mb-3"></div>
       <div className="container">
-        <div className="row g-3 mt-4">
-          {orders.map((order) => (
-            <div key={order._id} className="col-md-4">
-              <div className="card m-2 p-3">
-                <div className=" text-center">
-                  <img
-                    className="img-fluid card-img rounded"
-                    src={order.img}
-                    alt=""
-                  />
-                </div>
-                <div className="meal-info text-center">
-                  <h4>{order.name}</h4>
-                  <p>{order.description}</p>
-                  <p>{order.days} Days</p>
-                </div>
-                <hr />
-                <h3 className="price fw-bold">${order.price}</h3>
-                <small className="pending">
-                  {" "}
-                  Status:
-                  <span className="text-danger ps-1">{order.status}</span>
-                </small>
-                <div className="delete-button ">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Days</th>
+              <th>Status</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          {orders.map((order, index) => (
+            <tbody>
+              <tr>
+                <td>{index + 1}</td>
+                <td>
+                  <img className="myOrder-img pe-1" src={order.img} alt="" />
+                  {order?.name}
+                </td>
+                <td>{order.days}</td>
+                <td>{order.status}</td>
+                <td>${order.price}</td>
+                <td>
+                  <Link to={`/placeOrder/${order._id}`}>
+                    <button className=" btn bg-warning">Buy Now</button>
+                  </Link>
                   <button
-                    className="btn btn-warning px-4"
+                    className="btn order-delete-btn ms-1"
                     onClick={() => handleDelete(order._id)}
                   >
-                    Delete
+                    X
                   </button>
-                </div>
-                <div className="details">
-                  <Link to={`/placeOrder/${order._id}`}>
-                    <button className=" btn btn-warning">
-                      <i class="fas pe-2 fa-cart-arrow-down"></i>Buy Now
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+                </td>
+              </tr>
+            </tbody>
           ))}
-        </div>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td className="fw-bold">Total</td>
+              <td className="fw-bold">${total}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </Table>
       </div>
     </div>
   );

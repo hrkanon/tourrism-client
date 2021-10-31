@@ -1,14 +1,7 @@
-.pending {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding-bottom: 6px;
+.myOrder-img {
+  width: 80px;
 }
-.delete-button {
-  position: absolute;
-  bottom: 0;
-
-  padding-bottom: 10px;
-  padding-right: 10px;
+.order-delete-btn {
+  background-color: grey;
+  padding: 5px 20px;
 }
